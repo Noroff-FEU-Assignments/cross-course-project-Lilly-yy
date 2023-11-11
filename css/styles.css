@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "Boots And Spurs";
+  src: url("../fonts/BootsAndSpurs.ttf") format("truetype");
+}
+
+body {
+  font-family: "Lato", "Arial", Verdana, Geneva, Tahoma, sans-serif;
+  color: #0a3641;
+  max-width: 1920px;
+}
+
+h1,
+h2,
+.logo {
+  font-family: "Lato", "Arial", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+  font-size: 1.4em;
+}
+
+header {
+  background-color: #fff;
+  color: #0a3641;
+  text-align: left;
+}
+
+header a {
+  color: #0a3641;
+}
+.center {
+  text-align: center;
+}
+
+.hiking_image {
+  max-height: 550px;
+  min-width: 450px;
+  min-height: 250px;
+  background-image: url("../images/Home.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.stripe {
+  color: #fff;
+  background-color: #0a3641;
+  text-align: center;
+  display: flex;
+}
+
+.stripe-column ul {
+  flex: 1;
+  margin: 0 10px;
+  list-style-type: none;
+}
+
+.footer_image_big {
+  min-width: 450px;
+  min-height: 250px;
+  position: relative;
+  width: 100%;
+}
+
+.background-image {
+  max-height: 550px;
+  min-width: 450px;
+  min-height: 250px;
+  width: 100%;
+  height: auto;
+  display: block;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 50%;
+  text-align: center;
+  font-family: "Lato", "Arial", Tahoma;
+  font-style: oblique;
+}
+
+footer {
+  background-color: #0a3641;
+  text-align: left;
+}
+footer a {
+  color: #fff;
+}

@@ -2,40 +2,93 @@
 <html>
 
 <head>
-    <title>My first website</title>
+    <title> Rainy Days </title>
+    <meta name="description" content="This is a page about rain jackets">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Hello world!</h1>
-    <p>Welcome to my first website.</p>
-    <h2>Web Security</h2>
-    <p id="web-security-question">How would you advise a potential client to secure his/her website
-        from web security attacks? Note: the word count for your answer should not be greater than 250 words</p>
-    <p id="web-security-answer">
-        I would advise the client to follow these best practices in web security:</p>
-    <h3>1. Sanitization of data.</h3>
-    <p>They should either manually or by using a well-known third-party solution
-        make sure the data they receive on the website is clean and in the correct format.</p>
+    <header>
+        <section class="header">
+        <nav>
+            <ul>
+                <a href="index.html"><img src="images/logo.png" alt="Logo of MyWebsite.com" class="logo" width="90" height="60" /></a></li>
+                <a href="news.html">News</a></li>
+                <a href="men.html">Men</a></li>
+                <a href="women.html">Women</a></li>
+                <a href="outlet.html">Outlet</a></li>
+             </ul>  
+        </section>  
+        <section class="stripe">
+                <p>Free shipping over $100</p>
+        </section>
+                
+           
+        </nav>
 
-    <h3>2. Secure authorization and authentication.</h3>
-    <p>They should take measures to ensure that only authorized users can access what they are permitted to
-        access. OneLogin and Okta could be helpful tools for this.
-    </p>
+    </header>
+<section class="hiking_image"></section>
+    <main>
+        <section class="center"><h1>Our most popular jackets</h1></section>
+        <section class="center"><a href="all.html">Browse all jackets</a></section>
+     
+        <section class="stripe">
 
-    <h3> 3. Using trustworthy third-party apps. </h3>
-    <p>Before starting to use a third-party application, I would
-        highly suggest for the client to research the apps. Cheap/free is very often not good. A look at how
-        many times per week the app is downloaded would be recommended.</p>
+            <nav class="stripe-column">
+                <ul> <li><p><i class="fas fa-box"style="font-size:24px"></i> </i>  </i> Free shipping </li>
+                <li>Free shipping on all orders over $100</li></ul> 
+            </nav> 
+            
+            <nav class="stripe-column">
+                <ul> <li><p><i class="fas fa-shipping-fast"style="font-size:24px"></i></i>Quick deliveries </li>
+                <li>All orders ship within the next workday</li></ul> 
+            </nav> 
 
-    <h3> 4. Continuous Deployment/Continuous Integration.</h3>
-    <p>I would recommend the client to set up automatic processes to check, test and deploy code.</p>
+            <nav class="stripe-column">
+                <ul> <li><p><i class="fas fa-exchange-alt"style="font-size:24px"></i> </i> Free returns</li>
+                <li>We offer 30 days of free returns</li></ul> 
+            </nav> 
 
-    <h3> 5. Network security.</h3>
-    <p>The client should also make sure to protect the data that moves between computers and servers.</p>
+            <nav class="stripe-column">
+                <ul> <li><p><i class="fas fa-phone-alt"style="font-size:24px"></i> </i> Call us</li>
+                <li>+47 9012 34 567</li></ul> 
+            </nav>
 
-    <h3> 6. Automatic user timeout.</h3>
-    <p>Lastly I would advise that the client sets up automatic user timeout so
-        that the user gets kicked out of the website if they have been inactive for a certain amount of time.
-        This is a
-        measure that can prevent wrong users from getting access if the right user forgets to log out.</p>
+        </section>        
+    
+    
+    <section class=footer_image_big>
+        <img src="images/Footer.jpg" alt="Footer image" class="background-image">
+        <div class="overlay-text">
+            <h3>I'd rather be hiking in the rain, 
+                than sitting inside at a desk on a sunny day</h3>
+                <h4>-Unknown</h4>
+        </div>   
+    </section>
+   
+
+    </main>
+
+    <footer>
+
+        <nav>
+            
+            <ul>
+                <a href="contact.html">Contact us</a></li>
+                <a href="about.html">About us</a></li>
+                <a href="shipping.html">Shipping and fees</a></li>
+                <a href="sizes.html">Size charts</a>
+                <a href="stores.html">Our stores</a>
+                <a href="newsletter.html">Join our newsletter</a>
+            </ul>
+        </nav>
+        Copyright &copy; 2023 Testing
+    </footer>
+
 </body>
+
+</html>
