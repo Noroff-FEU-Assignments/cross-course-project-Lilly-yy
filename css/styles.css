@@ -18,16 +18,45 @@ h2,
 }
 
 header {
+  /*Logo, News, Men, Women, Outlet */
   background-color: #fff;
   color: #0a3641;
   text-align: left;
 }
 
-header a {
+.header a {
+  text-decoration: none;
   color: #0a3641;
 }
+
+.header li {
+  /* Header liste */
+  flex: 1;
+  margin: 0 10px;
+  list-style-type: none;
+  display: inline;
+  margin-right: 5%;
+}
+
+.stripe1 {
+  color: #fff;
+  background-color: #0a3641;
+  text-align: center;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stripe1,
+.hiking_image {
+  margin: 0;
+  padding: 0;
+}
+
 .center {
   text-align: center;
+  align-items: center;
 }
 
 .hiking_image {
@@ -37,20 +66,102 @@ header a {
   background-image: url("../images/Home.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
 }
 
-.stripe {
+/* Start of product choices   */
+
+.jackets {
   color: #fff;
-  background-color: #0a3641;
+  background-color: #ffffff;
   text-align: center;
   display: flex;
 }
 
+.jackets a {
+  color: #0a3641;
+  text-decoration: none;
+}
+
+.jackets p {
+  margin-top: -2px;
+}
+.jackets ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style-type: none;
+}
+
+.jackets li {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.jacket-image {
+  display: block;
+  width: 80vw;
+  height: 75%;
+  max-width: 300px;
+}
+
+@media (min-width: 600px) {
+  .jackets img {
+    width: 100%;
+  }
+}
+
+.separator-line {
+  border: none;
+  height: 2px;
+  background-color: lightgray;
+  margin: 5px 0;
+}
+
+.jacket-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.review-stars {
+  color: red;
+  font-size: 1em;
+  margin-top: -25px;
+}
+
+.price {
+  color: #0a3641;
+  font-size: 1em;
+}
+/* End of product choices   */
+.stripe {
+  color: #fff;
+  background-color: #0a3641;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stripe-column {
+  flex: 1;
+  min-width: 250px;
+}
+
 .stripe-column ul {
   flex: 1;
-  margin: 0 10px;
+  margin: 0 5px;
   list-style-type: none;
+}
+
+.stripe-column li {
+  display: flex;
+  align-items: center;
+}
+
+.stripe-column li i {
+  font-size: 40px;
+  margin-right: 15px;
 }
 
 .footer_image_big {
@@ -84,8 +195,51 @@ header a {
 
 footer {
   background-color: #0a3641;
-  text-align: left;
 }
+
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+footer nav .right-align a {
+  font-size: 1.5em;
+}
+
 footer a {
   color: #fff;
+}
+
+footer nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer nav ul li {
+  margin-right: 30px;
+}
+
+footer nav ul li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 600px) {
+  footer nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  footer nav ul {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  footer nav ul li {
+    margin-right: 10px;
+  }
 }
