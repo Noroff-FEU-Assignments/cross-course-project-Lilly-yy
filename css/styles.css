@@ -24,21 +24,62 @@ header {
   text-align: left;
 }
 
-.header a {
-  text-decoration: none;
-  color: #0a3641;
-}
-
 .header li {
   /* Header liste */
   flex: 1;
   margin: 0 10px;
   list-style-type: none;
-  display: inline;
+  display: inline-flex;
+  align-items: center;
   margin-right: 5%;
 }
 
+.header a {
+  text-decoration: none;
+  color: #0a3641;
+}
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+header nav .right-align a {
+  font-size: 1.5em;
+  margin: 5px;
+}
+
+header nav .right-align li {
+  margin-right: 1px;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header nav ul li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 600px) {
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav ul {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
 .stripe1 {
+  /* Free shipping over $100 */
   color: #fff;
   background-color: #0a3641;
   text-align: center;
@@ -48,25 +89,28 @@ header {
   align-items: center;
 }
 
+header,
 .stripe1,
 .hiking_image {
   margin: 0;
   padding: 0;
 }
 
-.center {
+.center1 {
+  /* Our most popular jackets */
   text-align: center;
   align-items: center;
+  margin-top: 10px;
+  font-size: 1.4em;
 }
 
 .hiking_image {
-  max-height: 550px;
   min-width: 450px;
   min-height: 250px;
   background-image: url("../images/Home.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-position: top;
+  background-position: center;
 }
 
 /* Start of product choices   */
@@ -102,7 +146,6 @@ header {
   display: block;
   width: 80vw;
   height: 75%;
-  max-width: 300px;
 }
 
 @media (min-width: 600px) {
@@ -136,6 +179,21 @@ header {
   font-size: 1em;
 }
 /* End of product choices   */
+
+.center2 {
+  /* Browse all jackets */
+  text-align: center;
+  align-items: center;
+  margin-bottom: 25px;
+  margin-top: -10px;
+  font-size: 1.4em;
+}
+
+.center2 a {
+  text-decoration: none;
+  color: #0a3641;
+}
+
 .stripe {
   color: #fff;
   background-color: #0a3641;
@@ -242,4 +300,67 @@ footer nav ul li:last-child {
   footer nav ul li {
     margin-right: 10px;
   }
+}
+
+/* Product page */
+
+.product-img {
+  border: 1px solid #0a3641;
+  margin: 5px;
+  position: relative;
+  width: fit-content;
+  padding: 15px;
+}
+
+.jacket-image {
+  display: block;
+  max-width: 100%;
+}
+
+.magnify-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.product-info {
+  color: #0a3641;
+  text-align: left;
+}
+
+/* Dropdown menu */
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-menu li:hover > .submenu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 5px 10px;
+}
+
+.submenu a {
+  background-color: #0a3641;
+  color: #fff;
+}
+
+.dropdown-menu a:hover {
+  background-color: #7d99a0;
 }
