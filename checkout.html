@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rainy Days</title>
+    <meta name="description" content="This is a page about rain jackets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <section class="header">
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html"
+                ><img
+                  src="images/logo.png"
+                  alt="Logo of MyWebsite.com"
+                  class="logo"
+                  width="90"
+                  height="60"
+              /></a>
+            </li>
+            <li><a href="all.html">News</a></li>
+            <li><a href="all.html">Men</a></li>
+            <li><a href="all.html">Women</a></li>
+            <li><a href="all.html">Outlet</a></li>
+          </ul>
+
+          <ul class="right-align">
+            <li>
+              <a href=""><i class="fas fa-search"></i></a>
+            </li>
+            <li>
+              <a href="favorites.html"><i class="far fa-heart"></i></a>
+            </li>
+            <li>
+              <a href="myprofile.html"><i class="far fa-user"></i></a>
+            </li>
+            <li>
+              <a href="shoppingcart.html"
+                ><i class="fas fa-shopping-cart"></i
+              ></a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section class="stripe1"><p>Free shipping over $100</p></section>
+    </header>
+
+    <main>
+      <h2>
+        Checkout
+        <hr class="separator-line2" />
+      </h2>
+
+      <form action="submit.php" method="POST">
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="form-row">
+            <input type="text" name="firstname" placeholder="First name" />
+            <input type="text" name="lastname" placeholder="Last name" />
+          </div>
+
+          <div class="form-row">
+            <select name="Country code" id="landcode">
+              <option value="norway">Norway +47</option>
+              <option value="sweden">Sweden +46</option>
+              <option value="denmark">Denmark +45</option>
+            </select>
+            <input type="text" name="phone" placeholder="Phone number" />
+          </div>
+
+          <div class="form-row">
+            <input type="text" name="email" placeholder="E-mail" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Shipping details</legend>
+
+          <div class="form-row">
+            <label for="country">Country</label>
+            <select name="Country" id="country">
+              <option value="norway">Norway</option>
+              <option value="sweden">Sweden</option>
+              <option value="denmark">Denmark</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <input type="text" name="street" placeholder="Street address" />
+          </div>
+          <div class="form-row">
+            <input
+              type="text"
+              name="addressline2"
+              placeholder="Address line 2"
+            />
+          </div>
+
+          <div class="form-row">
+            <input type="text" name="zip" placeholder="Zip code" />
+            <input type="text" name="city" placeholder="City" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Shipping method</legend>
+          <input type="radio" name="bring" value="Bring" />
+          <label for="bring">Bring</label>
+          <input type="radio" name="postnord" value="Post Nord" />
+          <label for="postnord">Post Nord</label>
+          <input type="radio" name="helthjem" value="Helt Hjem" />
+          <label for="helthjem">Helt Hjem</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Payment method</legend>
+          <input type="radio" name="paypal" value="Paypal" />
+          <label for="paypal">Paypal</label>
+          <input type="radio" name="vipps" value="Vipps" />
+          <label for="vipps">Vipps</label>
+          <input type="radio" name="invoice" value="Invoice" />
+          <label for="invoice">Invoice</label>
+        </fieldset>
+
+        <div class="checkout-buttons">
+          <a href="shoppingcart.html" class="button">Back to shopping cart</a>
+          <a href="success.html" class="button">Confirm and pay</a>
+        </div>
+      </form>
+
+      <section class="stripe">
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-box"></i>
+              <section>
+                <p>Free shipping</p>
+                <p>Free shipping on all orders over $100</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-shipping-fast"></i>
+              <section>
+                <p>Quick deliveries</p>
+                <p>All orders ship within the next workday</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-exchange-alt"></i>
+              <section>
+                <p>Free returns</p>
+                <p>We offer 30 days of free returns</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <section>
+                <p>Call us</p>
+                <p>+47 901234567</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section class="footer_image_big">
+        <img
+          src="images/Footer-small.jpg"
+          alt="Footer image"
+          class="background-image"
+        />
+      </section>
+    </main>
+
+    <footer>
+      <nav>
+        <ul class="left-align">
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="shipping.html">Shipping and fees</a></li>
+          <li><a href="sizes.html">Size charts</a></li>
+          <li><a href="newsletter.html">Join our newsletter</a></li>
+        </ul>
+
+        <ul class="right-align">
+          <li>
+            <a href="facebook.com"><i class="fab fa-facebook-square"></i></a>
+          </li>
+          <li>
+            <a href="instagram.com"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="youtube.com"><i class="fab fa-youtube"></i></a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>

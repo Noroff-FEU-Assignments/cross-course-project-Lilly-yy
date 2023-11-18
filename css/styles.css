@@ -787,3 +787,89 @@ footer nav ul li:last-child {
 .shopping-cart-buttons .button:hover {
   background-color: #0d4553;
 }
+
+/* Checkout */
+
+.separator-line2 {
+  background-color: #0a3641;
+  width: 50%;
+  border: none;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+}
+
+form {
+  max-width: 600px;
+  margin: auto;
+}
+
+form fieldset {
+  margin-bottom: 20px;
+}
+
+form label,
+form input,
+form select {
+  display: block;
+}
+
+.form-row {
+  display: flex;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.form-row .form-col:last-child {
+  margin-right: 0;
+}
+
+.form-row input {
+  flex: 1;
+  margin: 0 5px;
+}
+
+form input[type="radio"] {
+  margin-top: 0;
+  width: auto;
+}
+
+form input[type="text"] {
+  margin-top: 0;
+  width: auto;
+  font-size: 16px;
+}
+
+.landcode {
+  font-size: 16px;
+}
+
+form label[for="bring"],
+form label[for="postnord"],
+form label[for="helthjem"],
+form label[for="paypal"],
+form label[for="vipps"],
+form label[for="invoice"] {
+  display: block;
+  margin-left: 22px;
+  margin-top: 5px;
+}
+
+.checkout-buttons .button {
+  background-color: #0a3641;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.checkout-buttons .button:hover {
+  background-color: #0d4553;
+}
