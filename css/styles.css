@@ -7,6 +7,7 @@ body {
   font-family: "Lato", "Arial", Verdana, Geneva, Tahoma, sans-serif;
   color: #0a3641;
   max-width: 1920px;
+  font-size: 18px;
 }
 
 h1,
@@ -978,7 +979,5 @@ form label[for="invoice"] {
 /* Sizes */
 
 .regular-img {
-  max-height: 550px;
-  min-height: 250px;
   width: 100%;
 }
