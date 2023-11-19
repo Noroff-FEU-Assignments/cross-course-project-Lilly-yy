@@ -951,3 +951,33 @@ form label[for="invoice"] {
     margin: 5px 0;
   }
 }
+
+/* Newsletter */
+
+.newsletter {
+  background-color: #c3ced1;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.submit-button-newsletter {
+  text-align: center;
+}
+
+.submit-button-newsletter input[type="submit"] .newsletter form label,
+.newsletter form input,
+.newsletter form select {
+  display: inline-block;
+}
+
+/* Sizes */
+
+.regular-img {
+  max-height: 550px;
+  min-height: 250px;
+  width: 100%;
+}

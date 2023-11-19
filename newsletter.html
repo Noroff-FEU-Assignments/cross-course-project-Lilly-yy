@@ -34,6 +34,7 @@
             <li><a href="all.html">News</a></li>
             <li><a href="all.html">Men</a></li>
             <li><a href="all.html">Women</a></li>
+            <li><a href="all.html">Outlet</a></li>
           </ul>
 
           <ul class="right-align">
@@ -59,7 +60,24 @@
     </header>
 
     <main>
-      <h1>This site is under construction</h1>
+      <section class="newsletter">
+        <form action="submit.php" method="POST">
+          <fieldset>
+            <legend>Sign up for our newsletter here</legend>
+            <div class="form-row">
+              <input type="text" name="firstname" placeholder="First name" />
+              <input type="text" name="lastname" placeholder="Last name" />
+            </div>
+
+            <div class="form-row">
+              <input type="email" name="email" placeholder="E-mail" />
+            </div>
+            <div class="submit-button-newsletter">
+              <input type="submit" />
+            </div>
+          </fieldset>
+        </form>
+      </section>
 
       <section class="stripe">
         <nav class="stripe-column">
@@ -73,6 +91,7 @@
             </li>
           </ul>
         </nav>
+
         <nav class="stripe-column">
           <ul>
             <li>
@@ -129,13 +148,19 @@
 
         <ul class="right-align">
           <li>
-            <a href="facebook.com"><i class="fab fa-facebook-square"></i></a>
+            <a href="https://www.facebook.com/"
+              ><i class="fab fa-facebook-square"></i
+            ></a>
           </li>
           <li>
-            <a href="instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/"
+              ><i class="fab fa-instagram"></i
+            ></a>
           </li>
           <li>
-            <a href="youtube.com"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.youtube.com/"
+              ><i class="fab fa-youtube"></i
+            ></a>
           </li>
         </ul>
       </nav>
