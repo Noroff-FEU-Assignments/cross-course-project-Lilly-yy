@@ -26,7 +26,7 @@ header {
 
 .header li {
   /* Header liste */
-  flex: 1;
+  flex: 0;
   margin: 0 10px;
   list-style-type: none;
   display: inline-flex;
@@ -46,6 +46,13 @@ header nav {
   padding: 15px;
 }
 
+@media (max-width: 600px) {
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 header nav .right-align a {
   font-size: 1.5em;
   margin: 5px;
@@ -56,10 +63,10 @@ header nav .right-align li {
 }
 
 header nav ul {
-  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 header nav ul li:last-child {
@@ -96,21 +103,21 @@ header,
   padding: 0;
 }
 
+/* Index */
+
 .center1 {
   /* Our most popular jackets */
   text-align: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 2px;
   font-size: 1.4em;
 }
 
 .hiking_image {
-  min-width: 450px;
   min-height: 250px;
   background-image: url("../images/Home.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
 /* Start of product choices   */
@@ -154,6 +161,12 @@ header,
   }
 }
 
+@media (max-width: 600px) {
+  .jackets ul {
+    flex-direction: column;
+  }
+}
+
 .separator-line {
   border: none;
   height: 2px;
@@ -194,6 +207,7 @@ header,
   color: #0a3641;
 }
 
+/* Our most popular jackets */
 .stripe {
   color: #fff;
   background-color: #0a3641;
@@ -223,7 +237,6 @@ header,
 }
 
 .footer_image_big {
-  min-width: 450px;
   min-height: 250px;
   position: relative;
   width: 100%;
@@ -231,7 +244,17 @@ header,
 
 .background-image {
   max-height: 550px;
-  min-width: 450px;
+  width: 100%;
+  height: auto;
+  display: block;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.background-image-big {
+  max-height: 550px;
+
   min-height: 250px;
   width: 100%;
   height: auto;
@@ -452,16 +475,11 @@ footer nav ul li:last-child {
   .product-container {
     flex-direction: column;
   }
-
-  .image-container,
-  .jacket-info {
-    width: 100%;
-  }
 }
 
 .jacket-image {
   max-width: 600px;
-  height: auto;
+
   width: 100%;
 }
 
@@ -747,12 +765,12 @@ footer nav ul li:last-child {
 
 .cart-product-image {
   flex: 0 0 20%;
-  min-width: 150px;
 }
 
 .cart-product-image img {
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 .cart-product-details {
@@ -764,7 +782,7 @@ footer nav ul li:last-child {
 
 .cart-product-info {
   text-align: left;
-  padding: 20px;
+  padding: 5px;
 }
 
 .cart-amount {
@@ -780,6 +798,7 @@ footer nav ul li:last-child {
   text-decoration: none;
   display: inline-block;
   margin-right: 10px;
+  margin-top: 5px;
   cursor: pointer;
   text-align: center;
 }
@@ -852,9 +871,12 @@ form label[for="helthjem"],
 form label[for="paypal"],
 form label[for="vipps"],
 form label[for="invoice"] {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-left: 22px;
   margin-top: 5px;
+  line-height: -1;
+  vertical-align: middle;
 }
 
 .checkout-buttons .button {
@@ -868,8 +890,37 @@ form label[for="invoice"] {
   margin-right: 10px;
   cursor: pointer;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .checkout-buttons .button:hover {
   background-color: #0d4553;
+}
+
+.checkout-buttons {
+  text-align: center;
+}
+
+.checkout-title h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.checkout {
+  background-color: #c3ced1;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.separator-line3 {
+  background-color: #336470;
+  width: 100%;
+  border: none;
+  height: 2px;
+  text-align: left;
+  margin-left: 0;
 }

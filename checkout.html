@@ -60,87 +60,124 @@
     </header>
 
     <main>
-      <h2>
-        Checkout
-        <hr class="separator-line2" />
-      </h2>
+      <section class="checkout">
+        <div class="checkout-title"><h2>Checkout</h2></div>
+        <form action="submit.php" method="POST">
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="form-row">
+              <input type="text" name="firstname" placeholder="First name" />
+              <input type="text" name="lastname" placeholder="Last name" />
+            </div>
 
-      <form action="submit.php" method="POST">
-        <fieldset>
-          <legend>Your details</legend>
-          <div class="form-row">
-            <input type="text" name="firstname" placeholder="First name" />
-            <input type="text" name="lastname" placeholder="Last name" />
+            <div class="form-row">
+              <select name="Country code" id="landcode">
+                <option value="norway">Norway +47</option>
+                <option value="sweden">Sweden +46</option>
+                <option value="denmark">Denmark +45</option>
+              </select>
+              <input type="text" name="phone" placeholder="Phone number" />
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="email" placeholder="E-mail" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Shipping details</legend>
+            <div class="form-row">
+              <select name="Country" id="country">
+                <option value="norway">Norway</option>
+                <option value="sweden">Sweden</option>
+                <option value="denmark">Denmark</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="street" placeholder="Street address" />
+            </div>
+            <div class="form-row">
+              <input
+                type="text"
+                name="addressline2"
+                placeholder="Address line 2"
+              />
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="zip" placeholder="Zip code" />
+              <input type="text" name="city" placeholder="City" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Shipping method</legend>
+            <label for="bring"
+              ><input
+                type="radio"
+                id="bring"
+                name="shippingMethod"
+                value="Bring"
+              />Bring</label
+            >
+            <label for="postnord"
+              ><input
+                type="radio"
+                id="postnord"
+                name="shippingMethod"
+                value="Post Nord"
+              />
+              Post Nord</label
+            >
+            <label for="helthjem"
+              ><input
+                type="radio"
+                id="helthjem"
+                name="shippingMethod"
+                value="Helt Hjem"
+              />
+              Helt Hjem</label
+            >
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment method</legend>
+            <label for="paypal">
+              <input
+                type="radio"
+                id="paypal"
+                name="paymentMethod"
+                value="Paypal"
+              />
+              Paypal</label
+            >
+            <label for="vipps">
+              <input
+                type="radio"
+                id="vipps"
+                name="paymentMethod"
+                value="Vipps"
+              />
+              Vipps</label
+            >
+            <label for="invoice">
+              <input
+                type="radio"
+                id="invoice"
+                name="paymentMethod"
+                value="Invoice"
+              />
+              Invoice</label
+            >
+          </fieldset>
+
+          <div class="checkout-buttons">
+            <a href="shoppingcart.html" class="button">Back to shopping cart</a>
+            <a href="success.html" class="button">Confirm and pay</a>
           </div>
-
-          <div class="form-row">
-            <select name="Country code" id="landcode">
-              <option value="norway">Norway +47</option>
-              <option value="sweden">Sweden +46</option>
-              <option value="denmark">Denmark +45</option>
-            </select>
-            <input type="text" name="phone" placeholder="Phone number" />
-          </div>
-
-          <div class="form-row">
-            <input type="text" name="email" placeholder="E-mail" />
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Shipping details</legend>
-
-          <div class="form-row">
-            <label for="country">Country</label>
-            <select name="Country" id="country">
-              <option value="norway">Norway</option>
-              <option value="sweden">Sweden</option>
-              <option value="denmark">Denmark</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <input type="text" name="street" placeholder="Street address" />
-          </div>
-          <div class="form-row">
-            <input
-              type="text"
-              name="addressline2"
-              placeholder="Address line 2"
-            />
-          </div>
-
-          <div class="form-row">
-            <input type="text" name="zip" placeholder="Zip code" />
-            <input type="text" name="city" placeholder="City" />
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Shipping method</legend>
-          <input type="radio" name="bring" value="Bring" />
-          <label for="bring">Bring</label>
-          <input type="radio" name="postnord" value="Post Nord" />
-          <label for="postnord">Post Nord</label>
-          <input type="radio" name="helthjem" value="Helt Hjem" />
-          <label for="helthjem">Helt Hjem</label>
-        </fieldset>
-
-        <fieldset>
-          <legend>Payment method</legend>
-          <input type="radio" name="paypal" value="Paypal" />
-          <label for="paypal">Paypal</label>
-          <input type="radio" name="vipps" value="Vipps" />
-          <label for="vipps">Vipps</label>
-          <input type="radio" name="invoice" value="Invoice" />
-          <label for="invoice">Invoice</label>
-        </fieldset>
-
-        <div class="checkout-buttons">
-          <a href="shoppingcart.html" class="button">Back to shopping cart</a>
-          <a href="success.html" class="button">Confirm and pay</a>
-        </div>
-      </form>
+        </form>
+      </section>
 
       <section class="stripe">
         <nav class="stripe-column">
