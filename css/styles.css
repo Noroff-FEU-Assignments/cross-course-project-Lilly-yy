@@ -18,39 +18,35 @@ h2,
 }
 
 header {
-  /*Logo, News, Men, Women, Outlet */
   background-color: #fff;
   color: #0a3641;
   text-align: left;
 }
 
 .header li {
-  /* Header liste */
-  flex: 0;
   margin: 0 10px;
   list-style-type: none;
   display: inline-flex;
   align-items: center;
-  margin-right: 5%;
 }
 
 .header a {
   text-decoration: none;
   color: #0a3641;
 }
+
 header nav {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
 }
 
-@media (max-width: 600px) {
-  header nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+header nav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 header nav .right-align a {
@@ -62,27 +58,40 @@ header nav .right-align li {
   margin-right: 1px;
 }
 
-header nav ul {
+header nav ul.right-align {
+  justify-content: flex-end;
+}
+
+header nav ul li {
   list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
 }
 
-header nav ul li:last-child {
-  margin-right: 0;
-}
-
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   header nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
   }
+}
 
-  header nav ul {
+@media screen and (max-width: 900px) {
+  header nav ul:first-child {
     width: 100%;
+    justify-content: center;
     margin-bottom: 10px;
   }
+}
+
+header nav ul,
+header nav ul.right-align {
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+header nav ul:not(:first-child) {
+  width: 100%;
+  justify-content: right;
 }
 
 .stripe1 {
@@ -114,7 +123,7 @@ header,
 }
 
 .hiking_image {
-  min-height: 250px;
+  min-height: 110px;
   background-image: url("../images/Home.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -613,11 +622,18 @@ footer nav ul li:last-child {
   }
 }
 
-.contact-info {
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
-  width: 60%;
+@media screen and (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .split-box-hori,
+  .contact-form-box {
+    width: 100%;
+    max-width: none;
+    margin: 20px 0;
+  }
 }
 
 .contact-form {
@@ -923,4 +939,15 @@ form label[for="invoice"] {
   height: 2px;
   text-align: left;
   margin-left: 0;
+}
+@media screen and (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row input,
+  .form-row select {
+    width: 100%;
+    margin: 5px 0;
+  }
 }
