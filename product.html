@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Rain jacket product page</title>
-    <meta name="description" content="Our ergonomic rain jacket shows its best side when Mother Nature i sparticularly moody" />
+    <meta name="description" content="Our ergonomic rain jacket shows its best side when Mother Nature is particularly moody" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -31,9 +31,9 @@
                   height="60"
               /></a>
             </li>
-            <li><a href="all.html">News</a></li>
-            <li><a href="all.html">Men</a></li>
-            <li><a href="all.html">Women</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="all.html">All</a></li>
           </ul>
 
           <ul class="right-align">
@@ -61,34 +61,25 @@
     <main>
         <nav class="product-container">
           <div class="image-container">
-                <img src="images/RainyDays_Jacket6.jpg" alt="Scott Rain Jacket" class="jacket-image"/>
+                <img src="" alt="Scott Rain Jacket" class="jacket-image"/>
                 <div class="magnify-icon" onclick="magnifyImage()">🔍</div>
-              </li>
            </div>
-              <div class="jacket-info">
-                <h3>Scott</h3>
-                <h2>Scott Ergonomic Pro DP Rain Jacket</h2>
-                <p>Lorem Ipsum3</p>
-                <p>$89</p>
-                
-                <span class="review-stars">★★★★★</span>
-                <span class="reviews">(54 reviews)</span>
-                
-
+           <div class="jacket-info">
+                <h3>Gender</h3>
+                <h2>Title</h2>
+                <p>Description</p>
+                <p>Price</p>
+                                
                 <nav class="dropdown-menu">
-                  <ul>
-                    <li>
-                      <a href="#">Choose size <i class="fas fa-chevron-down"></i></a>
-                      <ul class="submenu">
-                      <li><a href="#">Extra small</a></li>
-                      <li><a href="#">Small</a></li>
-                      <li><a href="#">Medium</a></li>
-                      <li><a href="#">Large</a></li>
-                      <li><a href="#">Extra large</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  </nav>
+                    <ul>
+                        <li>
+                            <a href="#">Choose size <span class="selected-size"></span> <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <!-- Sizes will be inserted here dynamically -->
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
 
                 <nav class="add-cart">
                 <a href="shoppingcart.html" class="add-to-cart-btn">Add to cart</a>
@@ -115,39 +106,14 @@
                           Speedy delivery, we ship within the next day</p>
                         </section>
                       </li>
-
-                   
                   </ul>
                 </nav>
               </div>
-            </li>
-            </ul>
-
         </nav>
 
+    </main>
 
-        <nav class="info-text">
-<h1>Scott Ergonomic Pro DP Rain Jacket</h1>
-
-The ergonomic rain jacket shows its best side when Mother Nature is particularly moody. The stretchy, breathable outer material with coated DRYOsphere membrane fits perfectly and offers comfortable protection against wind and bad weather.
-
-<h4> Features:</h4>
-
-<li> Stretchable breathable, windproof and waterproof DRYOsphere membrane</li>
-<li>Waterproof labyrinth closure system</li>
-<li>Safety belt</li>
-<li>Reflective elements for best visibility</li>
-<li>Adjustments at collar and cuff</li>
-<li>Comes with a transportation-bag</li>
-
-<h4> Specifications:</h4>
-
-<li>Sizes: XS-4XL and short lenght M-XL</li>
-<li>Weight: 0,5kg</li>
-
-</nav>
-
-      
+    <footer>
       <section class="stripe">
         <nav class="stripe-column">
           <ul>
@@ -195,16 +161,20 @@ The ergonomic rain jacket shows its best side when Mother Nature is particularly
         </nav>
       </section>
 
-      <section class="footer_image_small">
+      <section class="footer_image_big">
         <img
-          src="images/Footer-small.jpg"
+          src="images/Footer.jpg"
           alt="Footer image"
-          class="background-image"
+          class="background-image-big"
         />
+        <div class="overlay-text">
+          <h3>
+            I'd rather be hiking in the rain, than sitting inside at a desk on a
+            sunny day
+          </h3>
+          <h4>-Unknown</h4>
+        </div>
       </section>
-    </main>
-
-    <footer>
       <nav>
         <ul class="left-align">
           <li><a href="contact.html">Contact us</a></li>
@@ -216,16 +186,23 @@ The ergonomic rain jacket shows its best side when Mother Nature is particularly
 
         <ul class="right-align">
           <li>
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+            <a href="https://www.facebook.com/"
+              ><i class="fab fa-facebook-square"></i
+            ></a>
           </li>
           <li>
-            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/"
+              ><i class="fab fa-instagram"></i
+            ></a>
           </li>
           <li>
-            <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.youtube.com/"
+              ><i class="fab fa-youtube"></i
+            ></a>
           </li>
         </ul>
       </nav>
     </footer>
+    <script src="/js/product.js"></script>
   </body>
 </html>

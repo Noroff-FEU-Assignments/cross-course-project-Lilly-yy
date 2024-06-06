@@ -115,8 +115,9 @@ header,
 
 /* Index */
 
-.center1 {
+
   /* Our most popular jackets */
+  .center1 {
   text-align: center;
   align-items: center;
   margin-top: 2px;
@@ -130,92 +131,6 @@ header,
   background-repeat: no-repeat;
 }
 
-/* Start of product choices   */
-
-.jackets {
-  color: #fff;
-  background-color: #ffffff;
-  text-align: center;
-  display: flex;
-}
-
-.jackets a {
-  color: #0a3641;
-  text-decoration: none;
-}
-
-.jackets p {
-  margin-top: -2px;
-}
-.jackets ul {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  list-style-type: none;
-}
-
-.jackets li {
-  margin-right: 20px;
-  flex: 1;
-}
-
-.jacket-image {
-  display: block;
-  width: 80vw;
-  height: 75%;
-}
-
-@media (min-width: 100px) {
-  .jackets img {
-    width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .jackets ul {
-    flex-direction: column;
-  }
-}
-
-.separator-line {
-  border: none;
-  height: 2px;
-  background-color: lightgray;
-  margin: 5px 0;
-}
-
-.jacket-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5px 0;
-}
-
-.review-stars {
-  color: #0d4553;
-  font-size: 1.5em;
-  margin-top: -25px;
-}
-
-.price {
-  color: #0a3641;
-  font-size: 1em;
-}
-/* End of product choices   */
-
-.center2 {
-  /* Browse all jackets */
-  text-align: center;
-  align-items: center;
-  margin-bottom: 25px;
-  margin-top: -10px;
-  font-size: 1.4em;
-}
-
-.center2 a {
-  text-decoration: none;
-  color: #0a3641;
-}
 
 /* Our most popular jackets */
 .stripe {
@@ -980,4 +895,94 @@ form label[for="invoice"] {
 
 .regular-img {
   width: 100%;
+}
+
+/* Javascript products */
+
+.jackets {
+  background-color: #ffffff;
+  text-align: center;
+  display: flex;
+  justify-content: center; 
+}
+
+.product-column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.product-column ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-image {
+  max-width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.product-name {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #0d4553;
+}
+
+.product-price {
+  font-size: 1.1em;
+  color: #0d4553;
+}
+
+.separator-line {
+  border: none;
+  height: 1px;
+  background-color: lightgray;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.submenu {
+  display: none;
+}
+
+.submenu.open {
+  display: block;
+}
+
+/* Stil for valgt størrelse */
+.selected {
+  font-weight: bold;
+  color: #0d4553;
+}
+
+.selected-size {
+  font-weight: bold;
+}
+
+.product-card a {
+  text-decoration: none; /* Fjerner understreken fra lenken */
+  color: inherit; /* Beholder fargen på teksten */
 }
