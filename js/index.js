@@ -1,38 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const productContainer = document.querySelector('.product-column ul');
-  const apiUrl = 'https://v2.api.noroff.dev/rainy-days';
-  const apiKey = 'd3cfcc19-ffe8-49d3-8434-b118db1535af'; 
-  const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGlsbHl5eXkiLCJlbWFpbCI6ImFubmhhdTU0Mzg4QHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE3NTI3NDI0fQ.WlIOorj7M-r4S0_d7Df5LSqxNrwfRfE193pZH63975g'; // Sett inn din tilgangstoken
+document.addEventListener("DOMContentLoaded", () => {
+  const productContainer = document.querySelector(".product-column ul");
+  const loadingIndicator = document.querySelector(".loading");
+  const apiUrl = "https://v2.api.noroff.dev/rainy-days";
+  const apiKey = "d3cfcc19-ffe8-49d3-8434-b118db1535af"; 
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGlsbHl5eXkiLCJlbWFpbCI6ImFubmhhdTU0Mzg4QHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE3NTI3NDI0fQ.WlIOorj7M-r4S0_d7Df5LSqxNrwfRfE193pZH63975g"; // Sett inn din tilgangstoken
 
   async function fetchProducts() {
       try {
+      // Vis loading indicator
+      loadingIndicator.style.display = "block";
+
+     
         const response = await fetch(apiUrl, {
-          method: 'GET',
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
-            'x-api-key': apiKey
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`,
+            "x-api-key": apiKey
           }
         });
   
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
   
         const data = await response.json();
-        console.log('Data fetched from API:', data); // Log entire data object
+        console.log("Data fetched from API:", data); // Log entire data object
         displayProducts(data);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
+      } finally {
+        // Skjul loading indicator
+        loadingIndicator.style.display = "none";
+
       }
     }
   
     function displayProducts(data) {
-      console.log('Data structure:', data);
+      console.log("Data structure:", data);
   
       const products = data.data;
       if (!Array.isArray(products)) {
-        console.error('Products data is not an array:', products);
+        console.error("Products data is not an array:", products);
         return;
       }
 
@@ -42,15 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(products);
       console.log(favProducts)
   
-      productContainer.innerHTML = '';
+      productContainer.innerHTML = "";
       favProducts.forEach(product => {
         const imageUrl = product.image.url;
         const imageAlt = product.image.alt || product.title; // Use product title if alt is empty
         const productId = product.id;
-        console.log('Product image URL:', imageUrl); // Log full image URL
+        console.log("Product image URL:", imageUrl); // Log full image URL
           
-        const productItem = document.createElement('li');
-        productItem.className = 'product-item';
+        const productItem = document.createElement("li");
+        productItem.className = "product-item";
   
         productItem.innerHTML = `
           <div class="product-card">
