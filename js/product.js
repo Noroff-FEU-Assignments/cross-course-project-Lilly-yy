@@ -50,6 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     function displayProduct(product) {
+      if (!product) {
+        throw new Error("Product not found")
+      }
+
+    // Oppdater dokumenttittelen
+          document.title = product.title;
+
     // Oppdater bilde
     const jacketImage = document.querySelector(".jacket-image");
     jacketImage.src = product.image.url;
