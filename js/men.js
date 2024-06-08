@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const productContainer = document.querySelector(".product-column ul");
     const loadingIndicator = document.querySelector(".loading");
+    const resultsContainer = document.querySelector(".results")
     const apiUrl = "https://v2.api.noroff.dev/rainy-days";
     const apiKey = "d3cfcc19-ffe8-49d3-8434-b118db1535af"; 
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGlsbHl5eXkiLCJlbWFpbCI6ImFubmhhdTU0Mzg4QHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE3NTI3NDI0fQ.WlIOorj7M-r4S0_d7Df5LSqxNrwfRfE193pZH63975g"; // Sett inn din tilgangstoken
@@ -10,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   // Vis loading indicator
       loadingIndicator.style.display = "block";
 
-     
           const response = await fetch(apiUrl, {
             method: "GET",
             headers: {
@@ -29,18 +29,21 @@ document.addEventListener("DOMContentLoaded", () => {
           displayProducts(data);
         } catch (error) {
           console.error("Error fetching products:", error);
+          resultsContainer.innerHTML = displayError("An error occurred while fetching products. Please try again later.");
         } finally {
             // Skjul loading indicator
             loadingIndicator.style.display = "none";
         }
       }
-    
+
+
       function displayProducts(data) {
         console.log("Data structure:", data);
     
         const products = data.data;
         if (!Array.isArray(products)) {
           console.error("Products data is not an array:", products);
+          resultsContainer.innerHTML = displayError("Unexpected data format received. Please try again later.");
           return;
         }
     
@@ -48,6 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Filtrere på herrejakker
         const menProducts = products.filter((product => product.gender.toLowerCase() === "male"));
+        if (menProducts.length === 0) {
+        resultsContainer.innerHTML = displayError("No products found. Please try again later.");
+        return;
+        }
 
         console.log(products);
         console.log(menProducts)

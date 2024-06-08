@@ -37,11 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
         displayProduct(product);
       } catch (error) {
         console.error("Error fetching product:", error);
+        showError("An error occurred while fetching products. Please try again later.");
     } finally {
         // Skjul loading indicator
         loadingIndicator.style.display = "none";
       }
     }
+    function showError(message) {
+        const errorContainer = document.createElement("div");
+        errorContainer.className = "error-message";
+        errorContainer.innerText = message;
+        document.body.appendChild(errorContainer);
+      }
   
     function displayProduct(product) {
     // Oppdater bilde
