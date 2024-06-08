@@ -32,8 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-  
+
         const { data: product } = await response.json();
+
+        if (!product) {
+          throw new Error("Product not found")
+        }
+  
+
         displayProduct(product);
       } catch (error) {
         resultsContainer.innerHTML = displayError("An error occurred while fetching the product. Please try again later.");

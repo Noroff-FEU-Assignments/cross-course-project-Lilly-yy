@@ -47,14 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
       productContainer.innerHTML = "";
       
       // Filtrere på damejakker
-      const menProducts = products.filter((product => product.gender.toLowerCase() === "female"));
-      if (menProducts.length === 0) {
+      const womenProducts = products.filter((product => product.gender.toLowerCase() === "female"));
+      if (womenProducts.length === 0) {
       resultsContainer.innerHTML = displayError("No products found. Please try again later.");
       return;
       }
 
 
-      menProducts.forEach(product => {
+      womenProducts.forEach(product => {
         const imageUrl = product.image.url;
         const imageAlt = product.image.alt || product.title; // Use product title if alt is empty
         const productId = product.id;
