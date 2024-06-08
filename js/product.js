@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const loadingIndicator = document.querySelector(".loading");
+    const resultsContainer = document.querySelector(".results")
     const apiUrl = "https://v2.api.noroff.dev/rainy-days";
     const apiKey = "d3cfcc19-ffe8-49d3-8434-b118db1535af"; 
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGlsbHl5eXkiLCJlbWFpbCI6ImFubmhhdTU0Mzg4QHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE3NTI3NDI0fQ.WlIOorj7M-r4S0_d7Df5LSqxNrwfRfE193pZH63975g"; 
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     if (!productId) {
       console.error("No product id found in URL");
+      resultsContainer.innerHTML = displayError("No product ID found in the URL. Please try again.");
       return;
     }
   
@@ -37,18 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
         displayProduct(product);
       } catch (error) {
         console.error("Error fetching product:", error);
-        showError("An error occurred while fetching products. Please try again later.");
-    } finally {
+        resultsContainer.innerHTML = displayError("An error occurred while fetching the product. Please try again later.");
+        } finally {
         // Skjul loading indicator
         loadingIndicator.style.display = "none";
       }
     }
-    function showError(message) {
-        const errorContainer = document.createElement("div");
-        errorContainer.className = "error-message";
-        errorContainer.innerText = message;
-        document.body.appendChild(errorContainer);
-      }
   
     function displayProduct(product) {
     // Oppdater bilde
@@ -56,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     jacketImage.src = product.image.url;
     jacketImage.alt = product.image.alt || product.title;
   
+
       // Oppdater tittel og informasjon
       document.querySelector(".jacket-info h3").innerText = product.gender;
       document.querySelector(".jacket-info h2").innerText = product.title;

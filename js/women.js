@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Vis loading indicator
     loadingIndicator.style.display = "block";
 
+   
         const response = await fetch(apiUrl, {
           method: "GET",
           headers: {
