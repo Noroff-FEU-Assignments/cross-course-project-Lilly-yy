@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const productId = urlParams.get("id");
   
     if (!productId) {
-      console.error("No product id found in URL");
       resultsContainer.innerHTML = displayError("No product ID found in the URL. Please try again.");
       return;
     }
@@ -35,10 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
   
         const { data: product } = await response.json();
-        console.log("Product fetched from API:", product); // Log entire product object
         displayProduct(product);
       } catch (error) {
-        console.error("Error fetching product:", error);
         resultsContainer.innerHTML = displayError("An error occurred while fetching the product. Please try again later.");
         } finally {
         // Skjul loading indicator

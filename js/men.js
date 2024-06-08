@@ -25,10 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
     
           const data = await response.json();
-          console.log("Data fetched from API:", data); // Log entire data object
           displayProducts(data);
         } catch (error) {
-          console.error("Error fetching products:", error);
           resultsContainer.innerHTML = displayError("An error occurred while fetching products. Please try again later.");
         } finally {
             // Skjul loading indicator
@@ -38,11 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       function displayProducts(data) {
-        console.log("Data structure:", data);
     
         const products = data.data;
         if (!Array.isArray(products)) {
-          console.error("Products data is not an array:", products);
           resultsContainer.innerHTML = displayError("Unexpected data format received. Please try again later.");
           return;
         }
@@ -56,14 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
         }
 
-        console.log(products);
-        console.log(menProducts)
-
         menProducts.forEach(product => {
           const imageUrl = product.image.url;
           const imageAlt = product.image.alt || product.title; // Use product title if alt is empty
           const productId = product.id;
-          console.log("Product image URL:", imageUrl); // Log full image URL
             
           const productItem = document.createElement("li");
           productItem.className = "product-item";
