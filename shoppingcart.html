@@ -14,6 +14,7 @@
       rel="stylesheet"
     />
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="/js/cart.js"></script>
   </head>
 
   <body>
@@ -22,7 +23,7 @@
         <nav>
           <ul>
             <li>
-              <a href="index.html"
+              <a href="/"
                 ><img
                   src="images/logo.png"
                   alt="Logo of MyWebsite.com"
@@ -61,37 +62,16 @@
     <main>
       <div class="shoppingcart-box">
         <h1>Shopping cart</h1>
-
-        <div class="shoppingcart-container">
-          <div class="cart-product-image">
-            <img src="images/RainyDays_Jacket6.jpg" alt="Rain jacket" />
-          </div>
-
-          <div class="cart-product-details">
-            <div class="cart-product-info">
-              <p><h3>Scott</h3></p>
-              <p><h2>Scott Ergonomic Pro DP Rain Jacket</h2></p>
-              <p>$89</p>
-              <p>Qty: 1</p>
-              <hr class="separator-line3" />
-            </div>
-
-            <div class="cart-amount">
-              <p>Products $ 89</p>
-              <p>Shipping $ 10</p>
-              <hr class="separator-line3" />
-              <p><h4>Total $ 99</h4></p>
-            </div>
-          </div>
+        <div id="cart-items" class="shoppingcart-container">
+          <!-- Produkter vil bli lagt inn her dynamisk -->
         </div>
-
         <div class="shopping-cart-buttons">
           <a href="all.html" class="button">Keep browsing</a>
           <a href="checkout.html" class="button">Proceed to checkout</a>
         </div>
       </div>
-
     </main>
+    
 
     <footer>
       <section class="stripe">

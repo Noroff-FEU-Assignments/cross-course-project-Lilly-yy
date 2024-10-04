@@ -6,9 +6,11 @@
 body {
   font-family: "Lato", "Arial", Verdana, Geneva, Tahoma, sans-serif;
   color: #0a3641;
-  max-width: 1920px;
   font-size: 18px;
+  margin: 0;
 }
+
+
 
 h1,
 h2,
@@ -93,6 +95,10 @@ header nav ul:not(:first-child) {
   justify-content: right;
 }
 
+a.active {
+  text-decoration: underline;
+}
+
 .stripe1 {
   /* Free shipping over $100 */
   color: #fff;
@@ -109,6 +115,11 @@ header,
 .hiking_image {
   margin: 0;
   padding: 0;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* Index */
@@ -239,9 +250,7 @@ footer nav ul li {
   margin-right: 30px;
 }
 
-footer nav ul li:last-child {
-  margin-right: 0;
-}
+
 
 @media (max-width: 600px) {
   footer nav {
@@ -251,12 +260,26 @@ footer nav ul li:last-child {
 
   footer nav ul {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
+    display: inline;  
+    text-align: center;
   }
 
   footer nav ul li {
-    margin-right: 10px;
+    margin-bottom: 1.5rem;
   }
+
+  .stripe-column li {
+   display: inline;
+  }
+}
+
+nav ul.left-align li a {
+  text-decoration: none;
+}
+
+nav ul.left-align li a.active {
+  text-decoration: underline;
 }
 
 /* Product page */
@@ -436,7 +459,6 @@ footer nav ul li:last-child {
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
-  max-width: 1920px;
   margin: auto;
   gap: 20px;
 }
@@ -984,3 +1006,23 @@ form label[for="invoice"] {
   margin: 10px 0;
 
 }
+
+.shipping-info, .size-chart {
+  background-color: #7d99a0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+a:hover {
+  font-weight: bold;
+  transition: 0.1s;
+}
+
+.size-table {
+  margin-left: 10px;
+}
+

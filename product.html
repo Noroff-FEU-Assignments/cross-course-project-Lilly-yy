@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <title>Rain jacket product page</title>
-    <meta name="description" content="Our ergonomic rain jacket shows its best side when Mother Nature is particularly moody" />
+    <meta
+      name="description"
+      content="Our ergonomic rain jacket shows its best side when Mother Nature is particularly moody"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -14,6 +17,7 @@
       rel="stylesheet"
     />
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="/js/cart.js"></script>
   </head>
 
   <body>
@@ -22,7 +26,7 @@
         <nav>
           <ul>
             <li>
-              <a href="index.html"
+              <a href="/"
                 ><img
                   src="images/logo.png"
                   alt="Logo of MyWebsite.com"
@@ -59,61 +63,68 @@
     </header>
 
     <main>
-        <nav class="product-container">
-          <div class="image-container">
-                <img src="" alt="Scott Rain Jacket" class="jacket-image"/>
-           </div>
-           <div class="jacket-info">
-            <div class="loading"></div>
-            <div class="results"></div>
+      <nav class="product-container">
+        <div class="image-container">
+          <img src="" alt="Rain Jacket" class="jacket-image" />
+        </div>
+        <div class="jacket-info">
+          <div class="loading"></div>
+          <div class="results"></div>
 
-                <h3>Gender</h3>
-                <h2>Title</h2>
-                <p>Description</p>
-                <p>Price</p>
-                      
-                <section class = "add-to-cart-container">
-                <nav class="dropdown-menu">
-                    <ul>
-                        <li>
-                            <a href="#">Choose size <span class="selected-size"></span> <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <!-- Sizes will be inserted here dynamically -->
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+          <h3>Gender</h3>
+          <h2>Title</h2>
+          <p>Description</p>
+          <p>Price</p>
 
-                <nav class="add-cart">
-                <a href="shoppingcart.html" class="add-to-cart-btn">Add to cart</a>
-                </nav>
-              </section>
-
-                <nav class="info-box">
-                  <ul>
-                    <li>
-                      <section>
-                        <p><i class="fas fa-box"></i>
-                        Free shipping on all orders over $100</p>
-                      </section>
-                    </li>
-                    <li>
-                      <section>
-                        <p><i class="fas fa-exchange-alt"></i>
-                        30 days free return</p>
-                      </section>
-                    </li>
-                      <li>
-                        <section>
-                          <p><i class="fas fa-shipping-fast"></i>
-                          Speedy delivery, we ship within the next day</p>
-                        </section>
-                      </li>
+          <section class="add-to-cart-container">
+            <nav class="dropdown-menu">
+              <ul>
+                <li>
+                  <a href="#"
+                    >Choose size <span class="selected-size"></span>
+                    <i class="fas fa-chevron-down"></i
+                  ></a>
+                  <ul class="submenu">
+                    <!-- Sizes will be inserted here dynamically -->
                   </ul>
-                </nav>
-              </div>
-        </nav>
+                </li>
+              </ul>
+            </nav>
 
+            <nav class="add-cart">
+              <a href="shoppingcart.html" class="add-to-cart-btn"
+                >Add to cart</a
+              >
+            </nav>
+          </section>
+
+          <nav class="info-box">
+            <ul>
+              <li>
+                <section>
+                  <p>
+                    <i class="fas fa-box"></i> Free shipping on all orders over
+                    $100
+                  </p>
+                </section>
+              </li>
+              <li>
+                <section>
+                  <p><i class="fas fa-exchange-alt"></i> 30 days free return</p>
+                </section>
+              </li>
+              <li>
+                <section>
+                  <p>
+                    <i class="fas fa-shipping-fast"></i> Speedy delivery, we
+                    ship within the next day
+                  </p>
+                </section>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </nav>
     </main>
 
     <footer>
