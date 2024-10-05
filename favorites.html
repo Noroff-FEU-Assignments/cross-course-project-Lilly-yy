@@ -17,6 +17,9 @@
       rel="stylesheet"
     />
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="/js/components/displayError.js" defer></script>
+    <script src="/js/product.js" defer></script>
+    <script src="/js/favorites.js" defer></script>
   </head>
 
   <body>
@@ -62,14 +65,12 @@
     </header>
 
     <main>
+      <div class="favorites-box">
       <h1>These are the items you have put on your wishlist</h1>
-      <section class="regular-img">
-        <img
-          src="Images/Favorites.jpg"
-          alt="image of mail being backed for shipping"
-          class="regular-img"
-        />
-      </section>
+      <div id="favorites-container">
+        <!-- Favorittprodukter vil vises her -->
+      </div>
+    </div>
     </main>
 
     <footer>
@@ -122,7 +123,7 @@
 
       <section class="footer_image_big">
         <img
-          src="images/Footer.jpg"
+          src="images/Footer-small.jpg"
           alt="Footer image"
           class="background-image-big"
         />

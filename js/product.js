@@ -3,16 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultsContainer = document.querySelector(".results");
   const apiUrl = "https://v2.api.noroff.dev/rainy-days";
   const apiKey = "d3cfcc19-ffe8-49d3-8434-b118db1535af";
-
-  // Hent produkt-id fra URL-en
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
+  if (!productId || !loadingIndicator) {
+    return;
+  }
+
   async function fetchProduct() {
     try {
-      // Vis loading indicator
       loadingIndicator.style.display = "block";
-
       if (!productId) {
         resultsContainer.innerHTML = displayError(
           "No product ID found in the URL. Please try again."
@@ -30,38 +30,32 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
       const { data: product } = await response.json();
 
       if (!product) {
         throw new Error("Product not found");
       }
-
       displayProduct(product);
     } catch (error) {
+      console.error("Error while fetching product:", error);
       resultsContainer.innerHTML = displayError(
         "An error occurred while fetching the product. Please try again later."
       );
     } finally {
-      // Skjul loading indicator
       loadingIndicator.style.display = "none";
     }
   }
 
   function displayProduct(product) {
     if (!product) {
-      throw new Error("Product not found");
+      throw new Error("Product data is not available");
     }
 
-    // Oppdater dokumenttittelen
     document.title = product.title;
-
-    // Oppdater bilde
     const jacketImage = document.querySelector(".jacket-image");
     jacketImage.src = product.image.url;
     jacketImage.alt = product.image.alt || product.title;
 
-    // Oppdater tittel og informasjon
     document.querySelector(".jacket-info h3").innerText = product.gender;
     document.querySelector(".jacket-info h2").innerText = product.title;
     document.querySelector(".jacket-info p:nth-of-type(1)").innerText =
@@ -70,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ".jacket-info p:nth-of-type(2)"
     ).innerText = `$${product.price.toFixed(2)}`;
 
-    // Oppdater tilgjengelige størrelser
     const sizeListElement = document.querySelector(".submenu");
     if (sizeListElement) {
       const sizeList = product.sizes
@@ -79,21 +72,16 @@ document.addEventListener("DOMContentLoaded", () => {
       sizeListElement.innerHTML = sizeList;
     }
 
-    // Legg til klikkhendelse for størrelser
     document.querySelectorAll(".submenu a").forEach((sizeLink) => {
       sizeLink.addEventListener("click", (event) => {
         event.preventDefault();
         const selectedSize = event.target.getAttribute("data-size");
-
-        // Oppdater tekstinnholdet i knappen
         const dropdownToggle = document.querySelector(
           ".dropdown-menu > ul > li > a"
         );
         if (dropdownToggle) {
           dropdownToggle.innerText = selectedSize;
         }
-
-        // Lukk størrelsesmenyen
         const dropdownMenu = document.querySelector(".submenu");
         if (dropdownMenu) {
           dropdownMenu.classList.remove("open");
@@ -101,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Legg til klikkhendelse for å åpne/lukke størrelsesmenyen
     const dropdownToggle = document.querySelector(
       ".dropdown-menu > ul > li > a"
     );
@@ -111,6 +98,69 @@ document.addEventListener("DOMContentLoaded", () => {
         const dropdownMenu = document.querySelector(".submenu");
         if (dropdownMenu) {
           dropdownMenu.classList.toggle("open");
+        }
+      });
+    }
+
+    const addToCartBtn = document.querySelector(".add-to-cart-btn");
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const selectedSize = document.querySelector(
+          ".dropdown-menu > ul > li > a"
+        ).innerText;
+        if (!selectedSize || selectedSize === "Choose size") {
+          alert("Please select a size.");
+          return;
+        }
+
+        const productToAdd = {
+          id: product.id,
+          name: product.title,
+          price: product.price,
+          image: product.image.url,
+          size: selectedSize,
+          quantity: 1,
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existingProductIndex = cart.findIndex(
+          (item) => item.id === productToAdd.id && item.size === selectedSize
+        );
+        if (existingProductIndex !== -1) {
+          cart[existingProductIndex].quantity += 1;
+        } else {
+          cart.push(productToAdd);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Product added to cart!");
+      });
+    }
+
+    const addToFavoritesButton = document.getElementById("add-to-favorites");
+    if (addToFavoritesButton) {
+      addToFavoritesButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const productToAdd = {
+          id: product.id,
+          name: product.title,
+          price: product.price,
+          image: product.image.url,
+        };
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const existingProduct = favorites.find(
+          (item) => item.id === productToAdd.id
+        );
+        if (existingProduct) {
+          alert("Product is already in your favorites!");
+        } else {
+          favorites.push(productToAdd);
+          localStorage.setItem("favorites", JSON.stringify(favorites));
+          alert(`${product.name} has been added to your favorites!`);
         }
       });
     }

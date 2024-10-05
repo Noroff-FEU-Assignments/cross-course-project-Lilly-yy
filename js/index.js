@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     productContainer.innerHTML = "";
     favProducts.forEach((product) => {
       const imageUrl = product.image.url;
-      const imageAlt = product.image.alt || product.title; // Use product title if alt is empty
+      const imageAlt = product.image.alt || product.title; 
       const productId = product.id;
 
       // Create product item element

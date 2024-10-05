@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     womenProducts.forEach((product) => {
       const imageUrl = product.image.url;
-      const imageAlt = product.image.alt || product.title; // Use product title if alt is empty
+      const imageAlt = product.image.alt || product.title; 
       const productId = product.id;
 
       const productItem = document.createElement("li");
