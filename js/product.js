@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ".dropdown-menu > ul > li > a"
         ).innerText;
         if (!selectedSize || selectedSize === "Choose size") {
-          alert("Please select a size.");
+          showCustomPopup("Please select a size.");
           return;
         }
 
@@ -135,9 +135,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
-        alert("Product added to cart!");
+        showCustomPopup(`${productToAdd.name} has been added to your cart!`);
       });
     }
+
+    function showCustomPopup(message) {
+      const popup = document.getElementById("custom-popup");
+      popup.innerText = message;
+      popup.classList.remove("hidden");
+      popup.classList.add("show");
+  
+      setTimeout(() => {
+          popup.classList.remove("show");
+          popup.classList.add("hidden");
+      }, 3000); // Skjuler popup-en etter 3 sekunder
+  }
 
     const addToFavoritesButton = document.getElementById("add-to-favorites");
     if (addToFavoritesButton) {
@@ -156,11 +168,11 @@ document.addEventListener("DOMContentLoaded", () => {
           (item) => item.id === productToAdd.id
         );
         if (existingProduct) {
-          alert("Product is already in your favorites!");
+          showCustomPopup("Product is already in your favorites!");
         } else {
           favorites.push(productToAdd);
           localStorage.setItem("favorites", JSON.stringify(favorites));
-          alert(`${product.name} has been added to your favorites!`);
+          showCustomPopup(`${productToAdd.name} has been added to your favorites!`);
         }
       });
     }
@@ -168,3 +180,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fetchProduct();
 });
+
+

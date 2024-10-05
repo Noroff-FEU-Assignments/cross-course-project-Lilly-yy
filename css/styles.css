@@ -524,6 +524,29 @@ nav ul.left-align li a.active {
   background-color: #2e5f6b; 
 }
 
+.custom-popup {
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  background-color: #0a3641;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.custom-popup.show {
+  opacity: 1;
+}
+
+.custom-popup.hidden {
+  display: none;
+}
+
 
 /*About us */
 
