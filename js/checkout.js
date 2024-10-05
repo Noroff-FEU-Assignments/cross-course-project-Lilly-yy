@@ -38,3 +38,20 @@ document.addEventListener("DOMContentLoaded", function () {
     cartSummaryContainer.innerHTML = cartSummaryHtml;
 }
 );
+
+document.addEventListener("DOMContentLoaded", function () {
+    const confirmPayButton = document.getElementById("confirm-pay-btn");
+  
+    if (confirmPayButton) {
+      confirmPayButton.addEventListener("click", function (event) {
+        // Prevent navigating to success.html immediately
+        event.preventDefault();
+  
+        // Clear the cart from localStorage
+        localStorage.removeItem("cart");
+  
+        // Redirect to the success page
+        window.location.href = "success.html";
+      });
+    }
+  });
