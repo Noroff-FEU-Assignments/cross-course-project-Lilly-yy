@@ -19,6 +19,7 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="/js/components/displayError.js" defer></script>
     <script src="/js/women.js" defer></script>
+    <script src="js/counter.js" defer></script>
 
     <!-- Hotjar Tracking Code for https://darling-pavlova-annhau.netlify.app/ -->
 <script>
@@ -64,9 +65,10 @@
               <a href="myprofile.html"><i class="far fa-user"></i></a>
             </li>
             <li>
-              <a href="shoppingcart.html"
-                ><i class="fas fa-shopping-cart"></i
-              ></a>
+<a href="shoppingcart.html" class="cart-icon">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cart-count" class="cart-count">0</span>
+</a>
             </li>
           </ul>
         </nav>

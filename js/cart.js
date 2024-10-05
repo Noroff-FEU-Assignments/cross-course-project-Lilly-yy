@@ -37,9 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
         });
 
-        cartHtml += `<div class="cart-total">Total: $${totalPrice.toFixed(2)}</div>`;
-        container.innerHTML = cartHtml;
+        const shippingCost = totalPrice < 100 ? 15 : 0;
 
+    cartHtml += `
+        <div class="cart-shipping">Shipping: $${shippingCost.toFixed(2)}</div>
+        <div class="cart-total">Total: $${(totalPrice + shippingCost).toFixed(2)}</div>
+    `;
+    container.innerHTML = cartHtml;
+    
         document.querySelectorAll(".remove-item").forEach((button) => {
             button.addEventListener("click", function () {
                 const index = this.getAttribute("data-index");

@@ -17,6 +17,9 @@
       rel="stylesheet"
     />
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="/js/components/displayError.js" defer></script>
+    <script src="/js/checkout.js" defer></script>
+    <script src="js/counter.js" defer></script>
     <!-- Hotjar Tracking Code for https://darling-pavlova-annhau.netlify.app/ -->
 <script>
   (function(h,o,t,j,a,r){
@@ -61,9 +64,10 @@
               <a href="myprofile.html"><i class="far fa-user"></i></a>
             </li>
             <li>
-              <a href="shoppingcart.html"
-                ><i class="fas fa-shopping-cart"></i
-              ></a>
+<a href="shoppingcart.html" class="cart-icon">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cart-count" class="cart-count">0</span>
+</a>
             </li>
           </ul>
         </nav>
@@ -72,9 +76,11 @@
       <section class="stripe1"><p>Free shipping over $100</p></section>
     </header>
 
-    <main>
-      <section class="checkout">
-        <div class="checkout-title"><h1>Checkout</h1></div>
+    <main class="checkout-container">
+      <section class="checkout-form-container">
+        <div class="checkout-title">
+          <h1>Checkout</h1>
+        </div>
         <form action="submit.php" method="POST">
           <fieldset>
             <legend>Your details</legend>
@@ -191,6 +197,11 @@
           </div>
         </form>
       </section>
+      <div class="cart-summary-container">
+        <h2>Your Cart</h2>
+        <div id="cart-summary"></div>
+        <div id="cart-total-summary" class="cart-total-summary"></div>
+      </div>
     </main>
 
     <footer>
