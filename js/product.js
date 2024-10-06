@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
           showCustomPopup("Please select a size.");
           return;
         }
+        
 
         const productToAdd = {
           id: product.id,
