@@ -1,8 +1,9 @@
+import apiConfig from "../constants/api.js";
+import { displayError } from "../utils/displayError.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const loadingIndicator = document.querySelector(".loading");
   const resultsContainer = document.querySelector(".results");
-  const apiUrl = "https://v2.api.noroff.dev/rainy-days";
-  const apiKey = "d3cfcc19-ffe8-49d3-8434-b118db1535af";
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
@@ -10,31 +11,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  const { apiUrl, apiKey, apiSecret } = apiConfig;
+
   async function fetchProduct() {
     try {
       loadingIndicator.style.display = "block";
-      if (!productId) {
-        resultsContainer.innerHTML = displayError(
-          "No product ID found in the URL. Please try again."
-        );
-        return;
-      }
+
+      const credentials = btoa(`${apiKey}:${apiSecret}`);
       const response = await fetch(`${apiUrl}/${productId}`, {
-        method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          "Authorization": `Basic ${credentials}`,
         },
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Failed to fetch product details");
       }
-      const { data: product } = await response.json();
 
-      if (!product) {
-        throw new Error("Product not found");
-      }
+      const product = await response.json();
       displayProduct(product);
     } catch (error) {
       console.error("Error while fetching product:", error);
@@ -51,34 +45,43 @@ document.addEventListener("DOMContentLoaded", () => {
       throw new Error("Product data is not available");
     }
 
-    document.title = product.title;
+    // Update page title
+    document.title = product.name;
+
+    // Update product image
     const jacketImage = document.querySelector(".jacket-image");
-    jacketImage.src = product.image.url;
-    jacketImage.alt = product.image.alt || product.title;
+    jacketImage.src = product.images[0]?.src || "placeholder.jpg";
+    jacketImage.alt = product.images[0]?.alt || product.name;
 
-    document.querySelector(".jacket-info h3").innerText = product.gender;
-    document.querySelector(".jacket-info h2").innerText = product.title;
-    document.querySelector(".jacket-info p:nth-of-type(1)").innerText =
-      product.description;
-    document.querySelector(
-      ".jacket-info p:nth-of-type(2)"
-    ).innerText = `$${product.price.toFixed(2)}`;
+    // Update product info
+    document.querySelector(".jacket-info h3").innerText =
+      product.categories[0]?.name || "Uncategorized";
+    document.querySelector(".jacket-info h2").innerText = product.name;
+    document.querySelector(".jacket-info p:nth-of-type(1)").innerHTML =
+      product.description || "No description available.";
+    document.querySelector(".jacket-info p:nth-of-type(2)").innerText = `$${product.price}`;
 
+    // Handle size attributes if available
     const sizeListElement = document.querySelector(".submenu");
     if (sizeListElement) {
-      const sizeList = product.sizes
-        .map((size) => `<li><a href="#" data-size="${size}">${size}</a></li>`)
+      const sizes = product.attributes.find(attr => attr.name.toLowerCase() === "size")?.options || [];
+      const sizeList = sizes
+        .map(size => `<li><a href="#" data-size="${size}">${size}</a></li>`)
         .join("");
       sizeListElement.innerHTML = sizeList;
     }
 
-    document.querySelectorAll(".submenu a").forEach((sizeLink) => {
-      sizeLink.addEventListener("click", (event) => {
+    setupSizeDropdown();
+    setupAddToCart(product);
+    setupAddToFavorites(product);
+  }
+
+  function setupSizeDropdown() {
+    document.querySelectorAll(".submenu a").forEach(sizeLink => {
+      sizeLink.addEventListener("click", event => {
         event.preventDefault();
         const selectedSize = event.target.getAttribute("data-size");
-        const dropdownToggle = document.querySelector(
-          ".dropdown-menu > ul > li > a"
-        );
+        const dropdownToggle = document.querySelector(".dropdown-menu > ul > li > a");
         if (dropdownToggle) {
           dropdownToggle.innerText = selectedSize;
         }
@@ -89,11 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    const dropdownToggle = document.querySelector(
-      ".dropdown-menu > ul > li > a"
-    );
+    const dropdownToggle = document.querySelector(".dropdown-menu > ul > li > a");
     if (dropdownToggle) {
-      dropdownToggle.addEventListener("click", (event) => {
+      dropdownToggle.addEventListener("click", event => {
         event.preventDefault();
         const dropdownMenu = document.querySelector(".submenu");
         if (dropdownMenu) {
@@ -101,33 +102,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     }
+  }
 
+  function setupAddToCart(product) {
     const addToCartBtn = document.querySelector(".add-to-cart-btn");
     if (addToCartBtn) {
       addToCartBtn.addEventListener("click", function (event) {
         event.preventDefault();
 
-        const selectedSize = document.querySelector(
-          ".dropdown-menu > ul > li > a"
-        ).innerText;
+        const selectedSize = document.querySelector(".dropdown-menu > ul > li > a").innerText;
         if (!selectedSize || selectedSize === "Choose size") {
           showCustomPopup("Please select a size.");
           return;
         }
-        
 
         const productToAdd = {
           id: product.id,
-          name: product.title,
+          name: product.name,
           price: product.price,
-          image: product.image.url,
+          image: product.images[0]?.src || "",
           size: selectedSize,
           quantity: 1,
         };
 
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const existingProductIndex = cart.findIndex(
-          (item) => item.id === productToAdd.id && item.size === selectedSize
+          item => item.id === productToAdd.id && item.size === selectedSize
         );
         if (existingProductIndex !== -1) {
           cart[existingProductIndex].quantity += 1;
@@ -139,19 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
         showCustomPopup(`${productToAdd.name} has been added to your cart!`);
       });
     }
-
-    function showCustomPopup(message) {
-      const popup = document.getElementById("custom-popup");
-      popup.innerText = message;
-      popup.classList.remove("hidden");
-      popup.classList.add("show");
-  
-      setTimeout(() => {
-          popup.classList.remove("show");
-          popup.classList.add("hidden");
-      }, 3000); // Skjuler popup-en etter 3 sekunder
   }
 
+  function setupAddToFavorites(product) {
     const addToFavoritesButton = document.getElementById("add-to-favorites");
     if (addToFavoritesButton) {
       addToFavoritesButton.addEventListener("click", function (event) {
@@ -159,15 +149,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const productToAdd = {
           id: product.id,
-          name: product.title,
+          name: product.name,
           price: product.price,
-          image: product.image.url,
+          image: product.images[0]?.src || "",
         };
 
         let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-        const existingProduct = favorites.find(
-          (item) => item.id === productToAdd.id
-        );
+        const existingProduct = favorites.find(item => item.id === productToAdd.id);
         if (existingProduct) {
           showCustomPopup("Product is already in your favorites!");
         } else {
@@ -179,7 +167,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function showCustomPopup(message) {
+    const popup = document.getElementById("custom-popup");
+    popup.innerText = message;
+    popup.classList.remove("hidden");
+    popup.classList.add("show");
+
+    setTimeout(() => {
+      popup.classList.remove("show");
+      popup.classList.add("hidden");
+    }, 3000);
+  }
+
   fetchProduct();
 });
-
-

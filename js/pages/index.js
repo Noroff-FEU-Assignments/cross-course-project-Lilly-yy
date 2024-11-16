@@ -1,20 +1,23 @@
+import apiConfig from "../constants/api.js";
+import { displayError } from "../utils/displayError.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const productContainer = document.querySelector(".product-column ul");
   const loadingIndicator = document.querySelector(".loading");
   const resultsContainer = document.querySelector(".results");
-  const apiUrl = "https://v2.api.noroff.dev/rainy-days";
-  const apiKey = "d3cfcc19-ffe8-49d3-8434-b118db1535af";
+
+const { apiUrl, apiKey, apiSecret } = apiConfig;
 
   async function fetchProducts() {
     try {
       // Vis loading indicator
       loadingIndicator.style.display = "block";
 
+      const credentials = btoa(`${apiKey}:${apiSecret}`);
       const response = await fetch(apiUrl, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          Authorization: `Basic ${credentials}`,
         },
       });
 
@@ -23,6 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const data = await response.json();
+      if (!Array.isArray(data)) {
+        throw new Error("Unexpected data format");
+      }
+
       displayProducts(data);
     } catch (error) {
       resultsContainer.innerHTML = displayError(
@@ -34,19 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function displayProducts(data) {
-    const products = data.data;
-    if (!Array.isArray(products)) {
-      resultsContainer.innerHTML = displayError(
-        "Unexpected data format received. Please try again later."
-      );
-      return;
-    }
+  function displayProducts(products) {
+    // Filtrere på populære jakker
+    const popularProducts = products.filter(
+      (product) =>
+        Array.isArray(product.tags) &&
+        product.tags.some((tag) => tag.name.toLowerCase() === "popular")
+    );
 
-    // Filtrere på favorittjakker
-    const favProducts = products.filter((product) => product.favorite === true);
-
-    if (favProducts.length === 0) {
+    if (popularProducts.length === 0) {
       resultsContainer.innerHTML = displayError(
         "No popular products found. Please try again later."
       );
@@ -54,10 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     productContainer.innerHTML = "";
-    favProducts.forEach((product) => {
-      const imageUrl = product.image.url;
-      const imageAlt = product.image.alt || product.title; 
+    popularProducts.forEach((product) => {
+      const imageUrl = product.images[0]?.src || "placeholder.jpg";
+      const imageAlt = product.images[0]?.alt || product.name;
       const productId = product.id;
+      const productPrice = `$${parseFloat(product.price).toFixed(2)}`;
 
       // Create product item element
       const productItem = document.createElement("li");
@@ -87,18 +91,18 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create product name
       const productName = document.createElement("h2");
       productName.className = "product-name";
-      productName.textContent = product.title;
+      productName.textContent = product.name;
 
       // Create product price
-      const productPrice = document.createElement("p");
-      productPrice.className = "product-price";
-      productPrice.textContent = `$${product.price.toFixed(2)}`;
+      const productPriceElement = document.createElement("p");
+      productPriceElement.className = "product-price";
+      productPriceElement.textContent = productPrice;
 
       // Append all elements to product card
       productCard.appendChild(productLink);
       productCard.appendChild(separatorLine);
       productCard.appendChild(productName);
-      productCard.appendChild(productPrice);
+      productCard.appendChild(productPriceElement);
 
       // Append product card to product item
       productItem.appendChild(productCard);

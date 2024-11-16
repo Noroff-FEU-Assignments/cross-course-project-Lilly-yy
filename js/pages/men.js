@@ -1,20 +1,21 @@
+import apiConfig from "../constants/api.js";
+import { displayError } from "../utils/displayError.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const productContainer = document.querySelector(".product-column ul");
   const loadingIndicator = document.querySelector(".loading");
   const resultsContainer = document.querySelector(".results");
-  const apiUrl = "https://v2.api.noroff.dev/rainy-days";
-  const apiKey = "d3cfcc19-ffe8-49d3-8434-b118db1535af";
 
+  const { apiUrl, apiKey, apiSecret } = apiConfig;
   async function fetchProducts() {
     try {
       // Vis loading indicator
       loadingIndicator.style.display = "block";
 
+      const credentials = btoa(`${apiKey}:${apiSecret}`);
       const response = await fetch(apiUrl, {
-        method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey,
+          Authorization: `Basic ${credentials}`,
         },
       });
 
@@ -34,8 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function displayProducts(data) {
-    const products = data.data;
+  function displayProducts(products) {
     if (!Array.isArray(products)) {
       resultsContainer.innerHTML = displayError(
         "Unexpected data format received. Please try again later."
@@ -46,8 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
     productContainer.innerHTML = "";
 
     // Filtrere på herrejakker
-    const menProducts = products.filter(
-      (product) => product.gender.toLowerCase() === "male"
+    const menProducts = products.filter((product) =>
+      product.categories.some(
+        (category) => category.name.toLowerCase() === "male"
+      )
     );
     if (menProducts.length === 0) {
       resultsContainer.innerHTML = displayError(
@@ -57,21 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     menProducts.forEach((product) => {
-      const imageUrl = product.image.url;
-      const imageAlt = product.image.alt || product.title;
+      const imageUrl = product.images[0]?.src || "placeholder.jpg"; 
+      const imageAlt = product.images[0]?.alt || product.name;
       const productId = product.id;
 
       const productItem = document.createElement("li");
       productItem.className = "product-item";
 
       productItem.innerHTML = `
-            <div class="product-card">
-            <a href="product.html?id=${productId}">
-            <img src="${imageUrl}" alt="${imageAlt}" class="product-image" />
-            <hr class="separator-line" />
-            <h2 class="product-name">${product.title}</h2>
-            <p class="product-price">$${product.price.toFixed(2)}</p>
-          </div>
+      <div class="product-card">
+        <a href="product.html?id=${productId}">
+          <img src="${imageUrl}" alt="${imageAlt}" class="product-image" />
+          <hr class="separator-line" />
+          <h2 class="product-name">${product.name}</h2>
+          <p class="product-price">$${parseFloat(product.price).toFixed(2)}</p>
+        </a>
+      </div>
           `;
 
       productContainer.appendChild(productItem);

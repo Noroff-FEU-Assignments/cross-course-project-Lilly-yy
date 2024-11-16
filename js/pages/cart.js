@@ -1,3 +1,5 @@
+import { updateCartCount } from "../utils/counter.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const cartItemsContainer = document.getElementById("cart-items");
 
@@ -34,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button class="remove-item" data-index="${index}"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
-                    <div class="product-price">
-                        $${product.price.toFixed(2)}
-                    </div>
+  <div class="product-price">$${(product.price * product.quantity).toFixed(
+    2
+  )}</div>
                 </div>
             `;
     });
