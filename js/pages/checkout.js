@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const cartSummaryContainer = document.getElementById("cart-summary");
+  
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   console.log("Cart loaded from localStorage on checkout page:", cart);
 

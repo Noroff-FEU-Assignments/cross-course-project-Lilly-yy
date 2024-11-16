@@ -1,4 +1,3 @@
-// Function to update the cart count
 export function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartCountElement = document.getElementById("cart-count");

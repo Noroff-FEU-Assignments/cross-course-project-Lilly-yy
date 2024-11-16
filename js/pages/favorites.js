@@ -12,11 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-/**
- * Renders the list of favorite products.
- * @param {Array} favorites - The array of favorite products.
- * @param {HTMLElement} container - The container element where products will be displayed.
- */
 function renderFavorites(favorites, container) {
   let favoritesHtml = "";
 
@@ -47,10 +42,6 @@ function renderFavorites(favorites, container) {
   });
 }
 
-/**
- * Handles the removal of a product from favorites.
- * @param {Event} event - The click event triggered by the remove button.
- */
 function handleRemoveFavorite(event) {
   const productId = event.target.closest("button").getAttribute("data-id");
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];

@@ -1,4 +1,5 @@
 import { updateCartCount } from "../utils/counter.js";
+import { displayError } from "../utils/displayError.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const cartItemsContainer = document.getElementById("cart-items");

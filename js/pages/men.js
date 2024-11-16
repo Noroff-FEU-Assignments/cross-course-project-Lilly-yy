@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     menProducts.forEach((product) => {
-      const imageUrl = product.images[0]?.src || "placeholder.jpg"; 
+      const imageUrl = product.images[0]?.src;
       const imageAlt = product.images[0]?.alt || product.name;
       const productId = product.id;
 
