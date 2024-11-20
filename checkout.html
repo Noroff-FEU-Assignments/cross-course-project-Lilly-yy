@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Checkout</title>
+    <meta
+      name="description"
+      content="You're just a few clicks away from completing your purchase! Enter your shipping details, and select your preferred payment method to finalize your purchase of premium all-weather rain jackets"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script type="module" src="js/utils/displayError.js" defer></script>
+    <script type="module" src="js/utils/counter.js" defer></script>
+    <script src="js/pages/checkout.js" defer></script>
+ 
+  </head>
+
+  <body>
+    <header>
+      <section class="header">
+        <nav>
+          <ul>
+            <li>
+              <a href="/"
+                ><img
+                  src="images/logo.png"
+                  alt="Logo of MyWebsite.com"
+                  class="logo"
+                  width="90"
+                  height="60"
+              /></a>
+            </li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="all.html">All</a></li>
+          </ul>
+
+          <ul class="right-align">
+
+            <li>
+              <a href="favorites.html"><i class="far fa-heart"></i></a>
+            </li>
+            <li>
+              <a href="myprofile.html"><i class="far fa-user"></i></a>
+            </li>
+            <li>
+<a href="shoppingcart.html" class="cart-icon">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cart-count" class="cart-count">0</span>
+</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section class="stripe1"><p>Free shipping over $100</p></section>
+    </header>
+
+    <main class="checkout-container">
+      <section class="checkout-form-container">
+        <div class="checkout-title">
+          <h1>Checkout</h1>
+        </div>
+        <form action="submit.php" method="POST">
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="form-row">
+              <input type="text" name="firstname" placeholder="First name" />
+              <input type="text" name="lastname" placeholder="Last name" />
+            </div>
+
+            <div class="form-row">
+              <select name="Country code" id="landcode">
+                <option value="norway">Norway +47</option>
+                <option value="sweden">Sweden +46</option>
+                <option value="denmark">Denmark +45</option>
+              </select>
+              <input type="text" name="phone" placeholder="Phone number" />
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="email" placeholder="E-mail" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Shipping details</legend>
+            <div class="form-row">
+              <select name="Country" id="country">
+                <option value="norway">Norway</option>
+                <option value="sweden">Sweden</option>
+                <option value="denmark">Denmark</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="street" placeholder="Street address" />
+            </div>
+            <div class="form-row">
+              <input
+                type="text"
+                name="addressline2"
+                placeholder="Address line 2"
+              />
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="zip" placeholder="Zip code" />
+              <input type="text" name="city" placeholder="City" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Shipping method</legend>
+            <label for="bring"
+              ><input
+                type="radio"
+                id="bring"
+                name="shippingMethod"
+                value="Bring"
+              />Bring</label
+            >
+            <label for="postnord"
+              ><input
+                type="radio"
+                id="postnord"
+                name="shippingMethod"
+                value="Post Nord"
+              />
+              Post Nord</label
+            >
+            <label for="helthjem"
+              ><input
+                type="radio"
+                id="helthjem"
+                name="shippingMethod"
+                value="Helt Hjem"
+              />
+              Helt Hjem</label
+            >
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment method</legend>
+            <label for="paypal">
+              <input
+                type="radio"
+                id="paypal"
+                name="paymentMethod"
+                value="Paypal"
+              />
+              Paypal</label
+            >
+            <label for="vipps">
+              <input
+                type="radio"
+                id="vipps"
+                name="paymentMethod"
+                value="Vipps"
+              />
+              Vipps</label
+            >
+            <label for="invoice">
+              <input
+                type="radio"
+                id="invoice"
+                name="paymentMethod"
+                value="Invoice"
+              />
+              Invoice</label
+            >
+          </fieldset>
+
+          <div class="checkout-buttons">
+            <a href="shoppingcart.html" class="button">Back to shopping cart</a>
+            <a href="success.html" class="button"id="confirm-pay-btn">Confirm and pay</a>
+          </div>
+        </form>
+      </section>
+      <div class="cart-summary-container">
+        <h2>Your Cart</h2>
+        <div id="cart-summary"></div>
+        <div id="cart-total-summary" class="cart-total-summary"></div>
+      </div>
+    </main>
+
+    <footer>
+      <section class="stripe">
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-box"></i>
+              <section>
+                <p>Free shipping</p>
+                <p>Free shipping on all orders over $100</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-shipping-fast"></i>
+              <section>
+                <p>Quick deliveries</p>
+                <p>All orders ship within the next workday</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-exchange-alt"></i>
+              <section>
+                <p>Free returns</p>
+                <p>We offer 30 days of free returns</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+        <nav class="stripe-column">
+          <ul>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <section>
+                <p>Call us</p>
+                <p>+47 901234567</p>
+              </section>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <section class="footer_image_big">
+        <img
+          src="images/Footer-small.jpg"
+          alt="Footer image"
+          class="background-image-big"
+        />
+        <div class="overlay-text">
+          <h3>
+            I'd rather be hiking in the rain, than sitting inside at a desk on a
+            sunny day
+          </h3>
+          <h4>-Unknown</h4>
+        </div>
+      </section>
+      <nav>
+        <ul class="left-align">
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="shipping.html">Shipping and fees</a></li>
+          <li><a href="sizes.html">Size charts</a></li>
+          <li><a href="newsletter.html">Join our newsletter</a></li>
+        </ul>
+
+        <ul class="right-align">
+          <li>
+            <a href="https://www.facebook.com/"
+              ><i class="fab fa-facebook-square"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>
